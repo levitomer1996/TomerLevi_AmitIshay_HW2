@@ -15,7 +15,6 @@ void initProduct(Product* pProd)
 {
 	printf("Please enter product name, Maximum length of %d \n", NAME_LEN);
 	fgets(pProd->name, sizeof(pProd->name), stdin);
-
 	strcpy(initBarCode("Please instert a barcode with a length %d:\n", BARCODE_LENGTH), pProd->barCode);
 	pProd->type = getProdcutTypeFromUser();
 	printf(" Please enter price: \n");

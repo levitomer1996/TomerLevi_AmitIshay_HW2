@@ -19,5 +19,8 @@ void initSuperMarket(SuperMarket* pSM)
 
 int addProductToSuperMarket(SuperMarket* pSM, Product* pProd)
 {
+	 (Product**)realloc(pSM->products, (pSM->numOfProducts+1)*sizeof(Product*));
+	
+	if (pSM->products == NULL) {
 	return 0;
 }
