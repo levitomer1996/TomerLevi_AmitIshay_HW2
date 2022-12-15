@@ -1,0 +1,21 @@
+#pragma once
+
+#ifndef _FUNCTIONS_
+#define _FUNCTIONS_
+#define MAX_LENGTH 255
+#include "SuperMarket.h"
+#include "Product.h"
+
+char* createDynStr(const char* msg);
+char** removeHashTagsFromString(const char* msg, int* pSize); // Made to be used when init supermarket
+void removeSpacedExtraSpacesFromStr(char** str, int* pSize);
+void removeExtraSpaces(char* str);
+char* getDynString(char* str);
+
+char* formatStringAdress(char** str, int* pSize);
+char** initSuperMarketAdress();
+
+//Switch cases Main FUNC
+void printSuperMarketProductFunc(const SuperMarket* pSM);
+void addProductFunc(Product* pProd);
+#endif
