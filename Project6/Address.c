@@ -7,18 +7,22 @@
 #define MAX_LENGTH 99
 
 
-void	initAddress(Address* pAd)
+void initAddress(Address* pAd)
 {
-	pAd->city = createDynStr("Please enter city name: \n");
-	pAd->street = createDynStr("Please enter street name: \n");
-	printf("Please enter house numebr: \n");
-	scanf_s("%d", &pAd->houseNumber);
+	int pSize = 0;
+	int finalPos = 0;
+	char* dynStr = createDynStr("Please insert adress: ");
+	char** adress = removeHashTagsFromString(dynStr, &pSize);
+	pAd->street = adress[0];
+	pAd->houseNumber = adress[1];
+	pAd->city = adress[2];
+	printAddress(pAd);
 }
 
 
 void printAddress(const Address* pAd)
 {
-	printf("street %s city %s number % d\n", pAd->street, pAd->city, pAd->houseNumber);
+	printf("Adress: %s %s, %s", pAd->street, pAd->houseNumber, pAd->city);
 }
 
 void freeAdress(Address* pAd)

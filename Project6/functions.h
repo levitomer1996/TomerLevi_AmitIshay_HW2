@@ -16,6 +16,10 @@ char* formatStringAdress(char** str, int* pSize);
 char** initSuperMarketAdress();
 
 //Switch cases Main FUNC
+//Print super market
 void printSuperMarketProductFunc(const SuperMarket* pSM);
-void addProductFunc(Product* pProd);
+void printSuperMarketCustomerFunc(const SuperMarket* pSM);
+
+//Add product
+void addProductFunc(SuperMarket* pSm);
 #endif

@@ -1,4 +1,5 @@
 #pragma once
+
 #ifndef _ADDRESS_
 #define _ADDRESS_
 
@@ -6,13 +7,12 @@
 
 typedef struct
 {
-	int houseNumber;
+	char* houseNumber;
 	char* street;
 	char* city;
 
 } Address;
-
-void	initAddress(Address* pAd);
+void initAddress(Address* pAd);
 void	printAddress(const Address* pAd);
 void	freeAdress(Address* pAd);
 

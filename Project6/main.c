@@ -23,10 +23,12 @@ int main()
 		switch (choice)
 		{
 		case '1':
-			//printSuperMarketProductFunc(&s);
+			printSuperMarket(&sm);
+			choice = '0';
 			break;
 		case '2':
-			//addProductFunc(&p);
+			addProductFunc(&sm);
+			choice = '0';
 			break;
 		case '3':
 			//addCustomerFunc();

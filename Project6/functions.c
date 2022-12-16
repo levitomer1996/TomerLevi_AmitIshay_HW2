@@ -103,9 +103,38 @@ void removeSpacedExtraSpacesFromStr(char** str, int* pSize)
 
 //Swtich case in main.
 
-void addProductFunc(Product* pProd)
+//Print superMarket
+
+void printSuperMarketProductFunc(const SuperMarket* pSm)
 {
-	printf("Enter the Product you want to add:\n");
-	initProduct(pProd);
+	if (pSm->numOfProducts == 0) {
+		printf("Super market has no products.");
+		return 0;
+	}
+	int i = 0;
+	while (pSm->products[i] != NULL) {
+		printProduct(pSm->products[i]);
+	}
 }
 
+void printSuperMarketCustomerFunc(const SuperMarket* pSM)
+{
+	if (pSM->numOfCustomers == 0) {
+		printf("Super market has no Customers.");
+		return 0;
+	}
+	int i = 0;
+	while (pSM->customers[i] != NULL) {
+		printProduct(pSM->customers[i]);
+	}
+
+}
+
+//Had product to Supermarket.
+void addProductFunc(SuperMarket* pSm)
+{
+	Product prod;
+	initProduct(&prod);
+	printProduct(&prod);
+	addProductToSuperMarket(pSm, &prod);
+}
