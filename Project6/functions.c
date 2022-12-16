@@ -136,5 +136,6 @@ void addProductFunc(SuperMarket* pSm)
 	Product prod;
 	initProduct(&prod);
 	printProduct(&prod);
+	
 	addProductToSuperMarket(pSm, &prod);
 }

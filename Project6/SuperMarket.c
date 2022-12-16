@@ -27,14 +27,18 @@ void initSuperMarket(SuperMarket* pSM)
 	
 }
 
-int addProductToSuperMarket(SuperMarket* pSM, Product* pProd)
+void addProductToSuperMarket(SuperMarket* pSM, Product* pProd)
 {
-	 (Product**)realloc(pSM->products, (pSM->numOfProducts+1)*sizeof(Product*));
-	
+	if (pSM == NULL || pProd == NULL) {
+		return;
+	}
+	pSM->products = (Product**)realloc(pSM->products, (pSM->numOfProducts + 1) * sizeof(Product*));
+
 	if (pSM->products == NULL) {
 		return 0;
 	}
 	pSM->products[pSM->numOfProducts] = pProd;
 	pSM->numOfProducts++;
+	printf("%d\n", pSM->numOfProducts);
 	printf("New product added.");
 }
