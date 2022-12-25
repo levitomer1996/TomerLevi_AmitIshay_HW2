@@ -10,16 +10,16 @@ const char* typeTitle[NofTypes];
 
 typedef struct
 {
-	char* name[NAME_LEN];
+	char* name;
 	ProductType type;
-	char* barCode[BARCODE_LENGTH];
+	char* barCode;
 	float price;
 	int inStock;
 } Product;
 
 void	initProduct(Product* pProd);
 void	printProduct(const Product* pProd);
-char* initBarCode(const char* msg);
+int		isBarcodeValid(const char* barcode);
 void	freeProduct(Product* pProd);
 
 #endif

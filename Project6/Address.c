@@ -14,6 +14,7 @@ void initAddress(Address* pAd)
 	char* dynStr = createDynStr("Please insert adress: ");
 	char** adress = removeHashTagsFromString(dynStr, &pSize);
 	pAd->street = adress[0];
+	//void addDoubleSpace(Address* pAd);
 	pAd->houseNumber = adress[1];
 	pAd->city = adress[2];
 	printAddress(pAd);
@@ -30,6 +31,23 @@ void freeAdress(Address* pAd)
 	free(pAd->city);
 	free(pAd->street);
 }
+//void addDoubleSpace(Address* pAd)
+//{
+//	const char space[2] = " ";
+//	const char doubleSpace[3] = "  ";
+//	char dest[20] = "";
+//	char* portion1 = strtok(pAd->street, space);
+//	while (portion1 != NULL)
+//	{
+//		strcat(dest, portion1);
+//		strcat(dest, doubleSpace);
+//		pAd->street = dest;
+//		//printf(" %s\n", str);
+//		portion1 = strtok(NULL, space);
+//
+//	}
+//}
+
 
 
 //char* getStrExactLength()

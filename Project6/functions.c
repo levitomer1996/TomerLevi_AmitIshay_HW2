@@ -55,15 +55,13 @@ char* createDynStr(const char* msg)
 	char buffer[MAX_LENGTH];
 	printf("%s", msg);
 
-	getchar();//getChar cleanes the input stream from '\n'
+	//getchar();//getChar cleanes the input stream from '\n' **amit hide getchar because its pass on the first letter
 	fgets(buffer, sizeof(buffer), stdin);
 	char* dynamicString = malloc(strlen(buffer) + 1);
 	if (!dynamicString) return 0;
 	strcpy(dynamicString, buffer);
 	return dynamicString;
 }
-
-
 char** removeHashTagsFromString(char* str, int* pSize)
 {
 
@@ -72,9 +70,14 @@ char** removeHashTagsFromString(char* str, int* pSize)
 	char* token = strtok(str, delim);
 	char** adressesArray = NULL;// An array of adresses of tokens aka words...
 	int pos = 0, size = 0;
-
+	int* pp;
 	while (token != NULL) {
-
+		pp = *token;
+		if (pp == ' ') // strtok City start with ' ' so with pp pointer i promoted to the City first letter
+		{
+			pp = (char*)token + sizeof(char);
+			token = pp;
+		}
 		adressesArray = (char**)realloc(adressesArray, (pos + 1) * sizeof(char*));
 		if (!adressesArray)
 		{
@@ -112,7 +115,7 @@ void printSuperMarketProductFunc(const SuperMarket* pSm)
 		return 0;
 	}
 	int i = 0;
-	while (pSm->products[i] != NULL) {
+	for (int i = 0; i < pSm->numOfProducts; i++) {
 		printProduct(pSm->products[i]);
 	}
 }
@@ -133,9 +136,5 @@ void printSuperMarketCustomerFunc(const SuperMarket* pSM)
 //Had product to Supermarket.
 void addProductFunc(SuperMarket* pSm)
 {
-	Product prod;
-	initProduct(&prod);
-	printProduct(&prod);
-	
-	addProductToSuperMarket(pSm, &prod);
+	addProductToSuperMarket(pSm);
 }

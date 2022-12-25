@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "functions.h"
 #include "Product.h"
 
 
@@ -13,74 +13,60 @@ const char* typeTitle[NofTypes] = { "Shelf","Frozen","Fridge", "FruitVegtable" }
 
 void initProduct(Product* pProd)
 {
-	printf("Please enter product name, Maximum length of %d \n", NAME_LEN);
 	getchar();
-	fgets(pProd->name, sizeof(pProd->name), stdin);
-	strcpy(initBarCode("Please instert a barcode with a length %d:\n", BARCODE_LENGTH), pProd->barCode);
+	 pProd->name = createDynStr("Please enter Supermarket's name: \n");
+	 
+	 pProd->barCode = createDynStr("Please create a barcode:(Must be in the length of 7, First and last letters must be Capital) \n");
+	printf("barcode is %s \n", pProd->barCode);
+	while (isBarcodeValid(pProd->barCode) == 0) {
+		pProd->barCode = createDynStr("Please create a barcode:(Must be in the length of 7, First and last letters must be Capital) \n");
+	}
 	pProd->type = getProdcutTypeFromUser();
 	printf(" Please enter price: \n");
 	scanf_s("%f", &pProd->price);
-	pProd->inStock = 1;
+	printf(" Please enter how many items: \n");
+	scanf_s("%d", &pProd->inStock);
+	
+	//pProd->inStock = 1;
 }
 
 void printProduct(const Product* pProd)
 {
-	printf(" Name - %s ,price - %f type - %s \n ", pProd->name, pProd->price, typeTitle[pProd->type]);
+	printf("Name - %s, Type - %s , Price - %.2f, in stock - %d, Barcode - %s \n", pProd->name, typeTitle[pProd->type], pProd->price,pProd->inStock, pProd->barCode);
 }
 
-char* initBarCode(const char* msg)
+int isBarcodeValid(const char* barcode)
 {
-
-	char* barcode[BARCODE_LENGTH];
-
-	int numCounter = 0, isBarcodeValid = 0;
-	char letter;
-	while (isBarcodeValid == 0)
+	if (strlen(barcode) !=8) {
+		printf("BardCode must be in length of 7");
+		return 0;
+	}
+	if (barcode[0] < 'A' && barcode[0]  > 'Z'|| barcode[6] < 'A' && barcode[6]  > 'Z') {
+		printf("First and last must be Capital");
+		return 0;
+	}
+	int numberCounter = 0;
+	for (int i = 0; i < strlen(barcode); i++)
 	{
-		for (int i = 0; i < BARCODE_LENGTH; i++)
-		{
-			printf("Please enter letter number: %d \n", i + 1);
-			scanf_s(" %c", &letter);
-
-			//Checks if first and last letter are capital letters
-			if (i == 0 || i == BARCODE_LENGTH - 1) {
-				while ((!(letter >= 'A' && letter <= 'Z')))
-				{
-					printf("First and last letters must be Capital. Please enter Capital letter: \n");
-					scanf_s(" %c", &letter);
-
-
-				}
-			}
-			//Checks if char with
-			if (!(letter >= 'A' && letter <= 'Z') && !(letter >= '0' && letter <= '9')) {
-				printf("Bardcode must be made by Capital letters and numbers 0 - 9 \n");
-				i--;
-			}
-			else {
-				if ((letter >= 'A' && letter <= 'Z')) {
-					*(barcode + i) = letter;
-					printf("It's a letter, letter is %c \n", *(barcode + i));
-				}
-				else
-				{
-					*(barcode + i) = letter;
-					printf("it's a number, letter is %c \n", *(barcode + i));
-					numCounter++;
-				}
-			}
-
+		if (barcode[i] < 'A' && barcode[i] > 'Z') {
+			printf("All must be Capital");
+			return 0;
 		}
-		if (numCounter >= 3 && numCounter <= 5) isBarcodeValid = 1;
-		else {
-			printf("Barcode must have 3-5 numbers! try again please! \n");
+		if (barcode[i] <= '9' && barcode[i] >= '0') {
+		
+			numberCounter++;
 		}
 	}
-	//checks if amount of numbers in barcode is valid.
-
-	return barcode;
-
+	if (numberCounter < 3 || numberCounter > 5) {
+		printf("must be 3-5 numbers");
+		return 0;
+	}
+	
+	return 1;
 }
+
+
+
 
 void freeProduct(Product* pProd)
 {

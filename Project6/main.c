@@ -12,8 +12,9 @@
 int main()
 {
 	//Init Super marketFirst
+	Address adress;
 	SuperMarket sm;
-	initSuperMarket(&sm);
+	initSuperMarket(&sm,&adress);
 
 	char choice = '0';
 	int exit = 0;
@@ -27,6 +28,7 @@ int main()
 			choice = '0';
 			break;
 		case '2':
+
 			addProductFunc(&sm);
 			choice = '0';
 			break;
@@ -64,7 +66,7 @@ int main()
 			printf("5.Print ShoopingCart.\n");
 			printf("6.Make a Payment.\n");
 			printf("7.Print Products with the same Type.\n");
-			printf("8.Exit,Dont forget to Pay before you leave!\n"); //We need to check if the customer pay
+			printf("8.Exit,Dont forget to Pay before you leave!\n"); //We need to check if the customer payed
 			printf("/================/\n");
 			scanf(" %c", &choice);
 

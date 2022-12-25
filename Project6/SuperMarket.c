@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
 #include "SuperMarket.h"
 #include "functions.h"
 
@@ -11,14 +12,11 @@ void printSuperMarket(const SuperMarket* pSM)
 	printSuperMarketCustomerFunc(pSM);
 }
 
-void initSuperMarket(SuperMarket* pSM)
-{
-	
+void initSuperMarket(SuperMarket* pSM, Address* pAd)
+{	
 	pSM->name = createDynStr("Please enter Supermarket's name: \n");
-
-	Address adress;
-	initAddress(&adress);
-	pSM->adress = &adress;
+	initAddress(pAd);
+	pSM->adress = pAd;
 	pSM->customers = NULL;
 	pSM->numOfCustomers = 0;
 	pSM->products = NULL;
@@ -27,18 +25,21 @@ void initSuperMarket(SuperMarket* pSM)
 	
 }
 
-void addProductToSuperMarket(SuperMarket* pSM, Product* pProd)
+int addProductToSuperMarket(SuperMarket* pSM)
 {
-	if (pSM == NULL || pProd == NULL) {
-		return;
+	if (pSM == NULL) {
+		return 0;
 	}
+	
 	pSM->products = (Product**)realloc(pSM->products, (pSM->numOfProducts + 1) * sizeof(Product*));
-
+	
 	if (pSM->products == NULL) {
 		return 0;
 	}
-	pSM->products[pSM->numOfProducts] = pProd;
+	pSM->products[pSM->numOfProducts] = malloc(sizeof(Product));
+	initProduct(pSM->products[pSM->numOfProducts]);
 	pSM->numOfProducts++;
 	printf("%d\n", pSM->numOfProducts);
 	printf("New product added.");
+	return 1;
 }
