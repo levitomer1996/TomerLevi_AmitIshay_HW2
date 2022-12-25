@@ -18,5 +18,6 @@ int	    addItemToCart(ShoppingCart* pCart, ShoppingItem* pItem);
 //Calculate the sum of the total price of the cart.
 int		sumCartCheckOut(ShoppingCart* pCart);
 void	freeShoppingCart(ShoppingCart* pCart);
+ShoppingItem* getShoppingItemFromCart(ShoppingCart* pCart,char* barcode);
 
 #endif

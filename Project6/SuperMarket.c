@@ -40,6 +40,45 @@ int addProductToSuperMarket(SuperMarket* pSM)
 	initProduct(pSM->products[pSM->numOfProducts]);
 	pSM->numOfProducts++;
 	printf("%d\n", pSM->numOfProducts);
-	printf("New product added.");
+	printf("New product added. \n");
 	return 1;
+}
+addCustomer(SuperMarket* pSM) {
+	if (pSM == NULL) {
+		return 0;
+	}
+
+	pSM->customers = (Customer**)realloc(pSM->customers, (pSM->numOfCustomers + 1) * sizeof(Customer*));
+
+	if (pSM->customers == NULL) {
+		return 0;
+	}
+	pSM->customers[pSM->numOfCustomers] = malloc(sizeof(Customer));
+	initCustomer(pSM->customers[pSM->numOfCustomers]);
+	pSM->numOfCustomers++;
+	
+	printf("New Customer added. \n");
+	return 1;
+}
+
+int isCustomerExist(SuperMarket* pSM,char* name)
+{
+	
+	for (int i = 0; i < pSM->numOfCustomers; i++) {
+		if (strcmp(name,pSM->customers[i]->name)==0) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+Customer* findCustomerByName(SuperMarket* pSM, char* name)
+{
+	
+	for (int i = 0; i < pSM->numOfCustomers; i++) {
+		if (strcmp(name, pSM->customers[i]->name) == 0) {
+			return pSM->customers[i];
+		}
+	}
+	return 0;
 }

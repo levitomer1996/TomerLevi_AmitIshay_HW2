@@ -5,6 +5,7 @@
 #include "functions.h"
 void initCustomer(Customer* pCust)
 {
+	getchar();
 	pCust->name = createDynStr("Please enter customer name.");
 	pCust->shoppingCart = NULL;
 }
@@ -12,7 +13,10 @@ void initCustomer(Customer* pCust)
 void printCustomer(Customer* pCust)
 {
 	printf("Customer's name - %s , \n", pCust->name);
-	printShoppingCart(pCust->shoppingCart);
+	if(pCust->shoppingCart != NULL){
+		printShoppingCart(pCust->shoppingCart);
+	}
+	
 }
 
 void freeCustomer(Customer* pCust)

@@ -18,4 +18,13 @@ void	printSuperMarket(const SuperMarket* pSM);
 void	initSuperMarket(SuperMarket* pSM, Address* pAd);
 int	addProductToSuperMarket(SuperMarket* pSM);
 void printSuperMarketProductFunc(const SuperMarket* pSm);
+
+//Add customer
+int addCustomer(SuperMarket* pSM);
+
+//Make a purchase
+int isCustomerExist(SuperMarket* pSM, char* name);
+Customer* findCustomerByName(SuperMarket* pSM, char* name);
+
+
 #endif

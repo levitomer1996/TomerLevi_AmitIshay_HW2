@@ -8,7 +8,7 @@
 void initShoppingItem(ShoppingItem* pItem, Product* pProd)
 {
 
-	pItem->barcode = &pProd->barCode;
+	pItem->barcode = pProd->barCode;
 	pItem->price = pProd->price;
 	pItem->quantity = 1;
 }

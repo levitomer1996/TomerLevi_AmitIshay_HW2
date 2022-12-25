@@ -111,24 +111,30 @@ void removeSpacedExtraSpacesFromStr(char** str, int* pSize)
 void printSuperMarketProductFunc(const SuperMarket* pSm)
 {
 	if (pSm->numOfProducts == 0) {
-		printf("Super market has no products.");
+		printf("Super market has no products. \n");
 		return 0;
 	}
 	int i = 0;
 	for (int i = 0; i < pSm->numOfProducts; i++) {
+		printf("%d) ", i + 1 );
 		printProduct(pSm->products[i]);
 	}
 }
 
+
+
+
+
 void printSuperMarketCustomerFunc(const SuperMarket* pSM)
 {
 	if (pSM->numOfCustomers == 0) {
-		printf("Super market has no Customers.");
+		printf("Super market has no Customers. \n");
 		return 0;
 	}
+	
 	int i = 0;
-	while (pSM->customers[i] != NULL) {
-		printProduct(pSM->customers[i]);
+	for (int i = 0; i < pSM->numOfCustomers; i++) {
+		printCustomer(pSM->customers[i]);
 	}
 
 }
@@ -137,4 +143,77 @@ void printSuperMarketCustomerFunc(const SuperMarket* pSM)
 void addProductFunc(SuperMarket* pSm)
 {
 	addProductToSuperMarket(pSm);
+}
+
+void addCustomerToSuperMarket(SuperMarket* pSm)
+{
+	addCustomer(pSm);
+}
+
+void makePurchaseFunc(SuperMarket* pSm)
+{
+	getchar();
+	char* customerName = createDynStr("Please insert customer's name:");
+	while (isCustomerExist(pSm, customerName) == 0) {
+	char* customerName = createDynStr("Customer is not listed. Please insert customer's name:");
+	};
+	printf("Arrvied here");
+	Customer* customer = malloc(sizeof(Customer*));
+	customer = findCustomerByName(pSm, customerName);;
+	ShoppingCart* pCart = malloc(sizeof(ShoppingCart));
+	initShoppingCart(pCart);
+	customer->shoppingCart = malloc(sizeof(ShoppingCart*));
+	customer->shoppingCart = pCart;
+	
+	printSuperMarketProductFunc(pSm);
+	printf("Please choose product from the list above. \n");
+	char clear = 'y';
+	while ((clear == 'Y' || clear == 'y')) {
+		printSuperMarketProductFunc(pSm);
+	
+		
+		handleAddItem(pSm, pCart);
+		printf("Press y/Y to procceed, anything else is back to main menu   \n");
+		scanf_s(" %c", &clear);
+	}
+	printShoppingCart(pCart);
+}
+
+Product* getProductByBarCode(SuperMarket* pSm, char* barcode)
+{
+	for (int i = 0; i < pSm->numOfProducts; i++) {
+		if (strcmp(barcode, pSm->products[i]->barCode) == 0) {
+			return pSm->products[i];
+		}
+	}
+	return 0;
+}
+
+int handleAddItem(SuperMarket* pSm, ShoppingCart* pCart)
+{
+	getchar();
+	char* barcode = createDynStr("Please insert barcode that you would like to had: \n");
+	int amount;
+	printf("Please enter amount of the chosen product: \n");
+	getchar();
+	scanf_s("%d", &amount);
+	Product* chosenProd = getProductByBarCode(pSm, barcode);
+	while (chosenProd == 0) {
+		getchar();
+		char* barcode = createDynStr("Please insert barcode that you would like to had: \n");
+		Product* chosenProd = getProductByBarCode(pSm, barcode);
+	}
+	while (chosenProd->inStock < amount) {
+		printf("There are only %d of this item. \n", chosenProd->inStock);
+		printf("Please enter amount of the chosen product: \n");
+		getchar();
+		scanf_s("%d", &amount);
+	}
+	chosenProd->inStock -= amount;
+	//Init new ITem in cart:
+	ShoppingItem* item = malloc(sizeof(ShoppingItem));
+	initShoppingItem(item, chosenProd);
+	item->quantity = amount;
+	addItemToCart(pCart,item);
+	printf("Item Added to cart. \n");
 }

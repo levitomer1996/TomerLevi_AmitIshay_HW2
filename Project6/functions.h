@@ -22,4 +22,12 @@ void printSuperMarketCustomerFunc(const SuperMarket* pSM);
 
 //Add product
 void addProductFunc(SuperMarket* pSm);
+//Add customer
+void addCustomerToSuperMarket(SuperMarket* pSm);
+
+//Make a purchase
+
+ void makePurchaseFunc(SuperMarket* pSm);
+ Product* getProductByBarCode(SuperMarket* pSm, char* barcode);
+ int handleAddItem(SuperMarket* pSm, ShoppingCart* pCart);
 #endif

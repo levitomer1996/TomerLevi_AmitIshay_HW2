@@ -33,10 +33,12 @@ int main()
 			choice = '0';
 			break;
 		case '3':
-			//addCustomerFunc();
-			break;
+			addCustomer(&sm);
+			choice = '0';
+;			break;
 		case '4':
-			//makePurchaseFunc();
+			makePurchaseFunc(&sm);
+			choice = '0';
 			break;
 		case '5':
 			//printShoppingCartFunc();
