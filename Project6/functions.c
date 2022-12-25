@@ -50,6 +50,14 @@ char** initSuperMarketAdress()
 	return adress;
 }
 
+void initTests()
+{
+	for (int i = 0; i < 7; i++)
+	{
+
+	}
+}
+
 char* createDynStr(const char* msg)
 {
 	char buffer[MAX_LENGTH];
@@ -174,7 +182,8 @@ void makePurchaseFunc(SuperMarket* pSm)
 		
 		handleAddItem(pSm, pCart);
 		printf("Press y/Y to procceed, anything else is back to main menu   \n");
-		scanf_s(" %c", &clear);
+		scanf_s("%c", &clear);
+		getchar();
 	}
 	printShoppingCart(pCart);
 }
@@ -191,23 +200,25 @@ Product* getProductByBarCode(SuperMarket* pSm, char* barcode)
 
 int handleAddItem(SuperMarket* pSm, ShoppingCart* pCart)
 {
-	getchar();
+	
 	char* barcode = createDynStr("Please insert barcode that you would like to had: \n");
+	printf(barcode);
 	int amount;
 	printf("Please enter amount of the chosen product: \n");
-	getchar();
+	
 	scanf_s("%d", &amount);
+	getchar();
 	Product* chosenProd = getProductByBarCode(pSm, barcode);
 	while (chosenProd == 0) {
-		getchar();
+	
 		char* barcode = createDynStr("Please insert barcode that you would like to had: \n");
 		Product* chosenProd = getProductByBarCode(pSm, barcode);
 	}
 	while (chosenProd->inStock < amount) {
 		printf("There are only %d of this item. \n", chosenProd->inStock);
 		printf("Please enter amount of the chosen product: \n");
-		getchar();
 		scanf_s("%d", &amount);
+		getchar();
 	}
 	chosenProd->inStock -= amount;
 	//Init new ITem in cart:

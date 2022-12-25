@@ -6,6 +6,7 @@
 #include "SuperMarket.h"
 #include "Product.h"
 
+void initTests();
 char* createDynStr(const char* msg);
 char** removeHashTagsFromString(const char* msg, int* pSize); // Made to be used when init supermarket
 void removeSpacedExtraSpacesFromStr(char** str, int* pSize);

@@ -39,8 +39,9 @@ int addItemToCart(ShoppingCart* pCart, ShoppingItem* pItem)
 	{
 		return 0;
 	}
-	pCart->numOfItems++;
 	pCart->items[pCart->numOfItems] = pItem;
+	pCart->numOfItems++;
+	
 	return 1;
 }
 
