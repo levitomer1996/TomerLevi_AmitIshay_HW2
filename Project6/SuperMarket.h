@@ -31,4 +31,7 @@ Customer* findCustomerByName(SuperMarket* pSM, char* name);
 //Print customers
 void printSuperMarketCustomers(SuperMarket* pSM);
 
+//Print by type
+void printByType(SuperMarket* pSM, ProductType type);
+
 #endif

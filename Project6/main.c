@@ -49,7 +49,8 @@ int main()
 			choice = '0';
 			break;			
 		case '7':
-			//printProductPerTypeFunc();
+			printProductsWithSameType(&sm);
+			choice = '0';
 			break;
 		case '8':
 			printf("thank you, see you soon..\n");

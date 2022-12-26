@@ -75,6 +75,11 @@ void freeProduct(Product* pProd)
 
 }
 
+void printAllTypes()
+{
+	
+}
+
 
 ProductType getProdcutTypeFromUser()
 {
@@ -83,7 +88,7 @@ ProductType getProdcutTypeFromUser()
 	for (int i = 0; i < NofTypes; i++)
 	{
 		printf("%d for %s \n", i, typeTitle[i]);
-		;
+		
 	}
 	scanf("%d", &type);
 	return (ProductType)type;

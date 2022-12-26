@@ -21,5 +21,6 @@ void	initProduct(Product* pProd);
 void	printProduct(const Product* pProd);
 int		isBarcodeValid(const char* barcode);
 void	freeProduct(Product* pProd);
+void    printAllTypes();
 
 #endif

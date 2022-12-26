@@ -92,3 +92,13 @@ void printSuperMarketCustomers(SuperMarket* pSM)
 		printCustomer(&pSM->customers[i]);
 	}
 }
+
+void printByType(SuperMarket* pSM, ProductType type)
+{
+	for (int i = 0; i < pSM->numOfProducts; i++)
+	{
+		if (pSM->products[i]->type == type) {
+			printProduct(pSM->products[i]);
+		}
+	}
+}

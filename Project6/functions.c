@@ -249,6 +249,9 @@ void makeCustomerPaymentFunc(SuperMarket* pSM)
 
 void printProductsWithSameType(SuperMarket* pSM)
 {
+	ProductType type = getProdcutTypeFromUser();
+	printByType(pSM, type);
+	
 }
 
 void printShoppingCartFunc(SuperMarket* pSm)
