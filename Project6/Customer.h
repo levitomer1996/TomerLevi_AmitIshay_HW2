@@ -1,6 +1,7 @@
 #pragma once
 #include "ShoppingCart.h"
-#include "SuperMarket.h"
+#ifndef _CUSTOMER_
+#define _CUSTOMER_
 
 typedef struct
 {

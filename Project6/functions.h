@@ -1,10 +1,10 @@
 #pragma once
+#include "SuperMarket.h"
 
 #ifndef _FUNCTIONS_
 #define _FUNCTIONS_
 #define MAX_LENGTH 255
-#include "SuperMarket.h"
-#include "Product.h"
+
 
 void initTests();
 char* createDynStr(const char* msg);
