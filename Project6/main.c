@@ -41,7 +41,8 @@ int main()
 			choice = '0';
 			break;
 		case '5':
-			//printShoppingCartFunc();
+			printShoppingCartFunc(&sm);
+			choice = '0';
 			break;
 		case '6':
 			//makeCustomerPaymentFunc();

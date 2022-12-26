@@ -228,3 +228,16 @@ int handleAddItem(SuperMarket* pSm, ShoppingCart* pCart)
 	addItemToCart(pCart,item);
 	printf("Item Added to cart. \n");
 }
+
+void printShoppingCartFunc(SuperMarket* pSm)
+{
+	printSuperMarketCustomers(pSm);
+	char* name = createDynStr("Please type customers name from the list to show his cart :\n");
+	Customer*	pCust = findCustomerByName(pSm, name);
+	while (pCust == NULL)
+	{
+		char* name = createDynStr("Customer doesn't exist,Please type customers name from the list to show his cart :\n");
+		Customer* pCust = findCustomerByName(pSm, name);
+	}
+	printShoppingCart(pCust->shoppingCart);
+}

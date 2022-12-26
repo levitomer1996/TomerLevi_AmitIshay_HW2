@@ -26,5 +26,7 @@ int addCustomer(SuperMarket* pSM);
 int isCustomerExist(SuperMarket* pSM, char* name);
 Customer* findCustomerByName(SuperMarket* pSM, char* name);
 
+//Print customers
+void printSuperMarketCustomers(SuperMarket* pSM);
 
 #endif

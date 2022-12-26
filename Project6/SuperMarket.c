@@ -74,11 +74,19 @@ int isCustomerExist(SuperMarket* pSM,char* name)
 
 Customer* findCustomerByName(SuperMarket* pSM, char* name)
 {
-	
 	for (int i = 0; i < pSM->numOfCustomers; i++) {
 		if (strcmp(name, pSM->customers[i]->name) == 0) {
 			return pSM->customers[i];
 		}
 	}
 	return 0;
+}
+
+void printSuperMarketCustomers(SuperMarket* pSM)
+{
+	for (int i = 0; i < pSM->numOfCustomers; i++)
+	{
+		printf("%d", i);
+		printCustomer(pSM->customers[i]);
+	}
 }
