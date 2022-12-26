@@ -2,8 +2,6 @@
 #include "Customer.h"
 #include "Product.h"
 #include "Address.h"
-#ifndef _SUPERMARKET_
-#define _SUPERMARKET_
 
 typedef struct {
 	char* name;
