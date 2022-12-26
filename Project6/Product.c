@@ -17,7 +17,7 @@ void initProduct(Product* pProd)
 	 pProd->name = createDynStr("Please enter Supermarket's name: \n");
 	 
 	 pProd->barCode = createDynStr("Please create a barcode:(Must be in the length of 7, First and last letters must be Capital) \n");
-	printf("barcode is %s \n", pProd->barCode);
+
 	while (isBarcodeValid(pProd->barCode) == 0) {
 		pProd->barCode = createDynStr("Please create a barcode:(Must be in the length of 7, First and last letters must be Capital) \n");
 	}
@@ -38,25 +38,32 @@ void printProduct(const Product* pProd)
 int isBarcodeValid(const char* barcode)
 {
 	if (strlen(barcode) !=8) {
-		printf("BardCode must be in length of 7");
+		printf("BardCode must be in length of 7\n");
 		return 0;
 	}
-	if (barcode[0] < 'A' && barcode[0]  > 'Z'|| barcode[6] < 'A' && barcode[6]  > 'Z') {
-		printf("First and last must be Capital");
+	if (!(barcode[0] >= 'A' && barcode[0]  <= 'Z')|| !(barcode[6] >= 'A' && barcode[6] <= 'Z')) {
+		printf("First and last must be Capital\n");
 		return 0;
 	}
 	int numberCounter = 0;
-	for (int i = 0; i < strlen(barcode); i++)
+	for (int i = 0; i < strlen(barcode) -1; i++)
 	{
-		if (barcode[i] < 'A' && barcode[i] > 'Z') {
-			printf("All must be Capital");
-			return 0;
-		}
+		if (!(barcode[i] >= 'A' && barcode[i] <= 'Z')) {
+			
+			if (barcode[i] <= '9' && barcode[i] >= '0') {
+
+				numberCounter++;
+			}
+			else {
+				printf("All must be Capital\n");
+				return 0;
+			}
 		
 		}
+		
 	}
 	if (numberCounter < 3 || numberCounter > 5) {
-		printf("must be 3-5 numbers");
+		printf("must be 3-5 numbers\n");
 		return 0;
 	}
 	
