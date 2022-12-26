@@ -34,4 +34,7 @@ void addCustomerToSuperMarket(SuperMarket* pSm);
  
  //Print shopping cart
  void printShoppingCartFunc();
+
+ void makeCustomerPaymentFunc(SuperMarket* pSM);
+ void printProductsWithSameType(SuperMarket* pSM);
 #endif

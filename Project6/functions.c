@@ -140,7 +140,7 @@ void printSuperMarketCustomerFunc(const SuperMarket* pSM)
 	
 	int i = 0;
 	for (int i = 0; i < pSM->numOfCustomers; i++) {
-		printCustomer(pSM->customers[i]);
+		printCustomer(&pSM->customers[i]);
 	}
 
 }
@@ -161,18 +161,26 @@ void makePurchaseFunc(SuperMarket* pSm)
 	getchar();
 	char* customerName = createDynStr("Please insert customer's name:");
 	while (isCustomerExist(pSm, customerName) == 0) {
+	getchar();
 	char* customerName = createDynStr("Customer is not listed. Please insert customer's name:");
 	};
 	printf("Arrvied here");
-	Customer* customer = malloc(sizeof(Customer*));
-	customer = findCustomerByName(pSm, customerName);;
-	ShoppingCart* pCart = malloc(sizeof(ShoppingCart));
-	initShoppingCart(pCart);
-	customer->shoppingCart = malloc(sizeof(ShoppingCart*));
-	customer->shoppingCart = pCart;
+	Customer* customer;
+	ShoppingCart* pCart;
+	customer = findCustomerByName(pSm, customerName);
+
+	//If shopping cart is not exist
+	if (customer->shoppingCart == NULL) {
+		pCart = (ShoppingCart*)malloc(sizeof(ShoppingCart));
+		initShoppingCart(pCart);
+		customer->shoppingCart = pCart;
+	}
+	else {
+		pCart = customer->shoppingCart;
+	}
+		
 	
-	printSuperMarketProductFunc(pSm);
-	printf("Please choose product from the list above. \n");
+	
 	char clear = 'y';
 	while ((clear == 'Y' || clear == 'y')) {
 		printSuperMarketProductFunc(pSm);
@@ -227,15 +235,28 @@ int handleAddItem(SuperMarket* pSm, ShoppingCart* pCart)
 	printf("Item Added to cart. \n");
 }
 
+void makeCustomerPaymentFunc(SuperMarket* pSM)
+{
+	getchar();
+	char* name = createDynStr("Please type customers name that you would like to check out :\n");
+	Customer* cust = findCustomerByName(pSM, name);
+	printShoppingCart(cust->shoppingCart);
+	printf("Payment has made ! \n");
+	freeShoppingCart(cust->shoppingCart);
+	printf("Shopping cart emptied. \n");
+
+}
+
+void printProductsWithSameType(SuperMarket* pSM)
+{
+}
+
 void printShoppingCartFunc(SuperMarket* pSm)
 {
-	printSuperMarketCustomers(pSm);
+	
+	getchar();
 	char* name = createDynStr("Please type customers name from the list to show his cart :\n");
-	Customer*	pCust = findCustomerByName(pSm, name);
-	while (pCust == NULL)
-	{
-		char* name = createDynStr("Customer doesn't exist,Please type customers name from the list to show his cart :\n");
-		Customer* pCust = findCustomerByName(pSm, name);
-	}
-	printShoppingCart(pCust->shoppingCart);
+	Customer*	cust = findCustomerByName(pSm, name);
+	printCustomer(cust);
+	printShoppingCart(cust->shoppingCart);
 }

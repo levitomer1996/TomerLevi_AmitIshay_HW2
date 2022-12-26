@@ -8,7 +8,7 @@
 typedef struct {
 	char* name;
 	Address* adress;
-	Customer** customers;
+	Customer* customers;
 	int numOfCustomers;
 	Product** products;
 	int numOfProducts;

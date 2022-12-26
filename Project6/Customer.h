@@ -9,7 +9,7 @@ typedef struct
 	ShoppingCart* shoppingCart;
 } Customer;
 
-void	initCustomer(Customer* pCust);
+Customer	initCustomer();
 void	printCustomer(Customer* pCust);
 void	freeCustomer(Customer* pCust);
 

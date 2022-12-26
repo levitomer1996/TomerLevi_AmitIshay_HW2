@@ -15,6 +15,9 @@ void initShoppingCart(ShoppingCart* pCart)
 
 void printShoppingCart(const ShoppingCart* pCart)
 {
+	if (pCart == NULL) {
+		return;
+	}
 	int totalPrice = 0;
 	printf("Shopping cart is: \n");
 	for (int i = 0; i < pCart->numOfItems; i++)

@@ -3,19 +3,20 @@
 
 #include "Customer.h"
 #include "functions.h"
-void initCustomer(Customer* pCust)
+Customer initCustomer()
 {
 	getchar();
-	pCust->name = createDynStr("Please enter customer name.");
-	pCust->shoppingCart = NULL;
+	Customer cust = { createDynStr("Please enter customer name."), NULL };
+	return cust;
 }
 
 void printCustomer(Customer* pCust)
 {
 	printf("Customer's name - %s , \n", pCust->name);
-	if(pCust->shoppingCart != NULL){
-		printShoppingCart(pCust->shoppingCart);
+	if(pCust->shoppingCart == NULL){
+		return;
 	}
+	printShoppingCart(pCust->shoppingCart);
 	
 }
 

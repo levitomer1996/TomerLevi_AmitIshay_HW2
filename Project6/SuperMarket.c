@@ -48,13 +48,15 @@ addCustomer(SuperMarket* pSM) {
 		return 0;
 	}
 
-	pSM->customers = (Customer**)realloc(pSM->customers, (pSM->numOfCustomers + 1) * sizeof(Customer*));
+	pSM->customers = (Customer*)realloc(pSM->customers, (pSM->numOfCustomers + 1) * sizeof(Customer));
 
 	if (pSM->customers == NULL) {
 		return 0;
 	}
-	pSM->customers[pSM->numOfCustomers] = malloc(sizeof(Customer));
-	initCustomer(pSM->customers[pSM->numOfCustomers]);
+	Customer cust = initCustomer();
+	
+	pSM->customers[pSM->numOfCustomers] = cust;
+	
 	pSM->numOfCustomers++;
 	
 	printf("New Customer added. \n");
@@ -65,7 +67,7 @@ int isCustomerExist(SuperMarket* pSM,char* name)
 {
 	
 	for (int i = 0; i < pSM->numOfCustomers; i++) {
-		if (strcmp(name,pSM->customers[i]->name)==0) {
+		if (strcmp(name,pSM->customers[i].name) == 0) {
 			return 1;
 		}
 	}
@@ -75,11 +77,11 @@ int isCustomerExist(SuperMarket* pSM,char* name)
 Customer* findCustomerByName(SuperMarket* pSM, char* name)
 {
 	for (int i = 0; i < pSM->numOfCustomers; i++) {
-		if (strcmp(name, pSM->customers[i]->name) == 0) {
-			return pSM->customers[i];
+		if (strcmp(name, pSM->customers[i].name) == 0) {
+			return  &(pSM->customers[i]);
 		}
 	}
-	return 0;
+	return;
 }
 
 void printSuperMarketCustomers(SuperMarket* pSM)
@@ -87,6 +89,6 @@ void printSuperMarketCustomers(SuperMarket* pSM)
 	for (int i = 0; i < pSM->numOfCustomers; i++)
 	{
 		printf("%d", i);
-		printCustomer(pSM->customers[i]);
+		printCustomer(&pSM->customers[i]);
 	}
 }
