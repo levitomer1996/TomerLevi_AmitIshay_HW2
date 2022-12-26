@@ -46,7 +46,7 @@ int isBarcodeValid(const char* barcode)
 		return 0;
 	}
 	int numberCounter = 0;
-	for (int i = 0; i < strlen(barcode) -1; i++)
+	for (int i = 0; i < strlen(barcode) - 1; i++)
 	{
 		if (!(barcode[i] >= 'A' && barcode[i] <= 'Z')) {
 			
