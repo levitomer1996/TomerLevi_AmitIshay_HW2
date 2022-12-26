@@ -52,9 +52,7 @@ int isBarcodeValid(const char* barcode)
 			printf("All must be Capital");
 			return 0;
 		}
-		if (barcode[i] <= '9' && barcode[i] >= '0') {
 		
-			numberCounter++;
 		}
 	}
 	if (numberCounter < 3 || numberCounter > 5) {
