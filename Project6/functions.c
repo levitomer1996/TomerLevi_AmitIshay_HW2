@@ -89,7 +89,7 @@ char** removeHashTagsFromString(char* str, int* pSize)
 		{
 			return 0;
 		}
-		token[0] = toupper(token[0]);
+		
 		adressesArray[pos] = getDynString(token);
 		size += strlen(token);
 		token = strtok(NULL, delim);
@@ -252,6 +252,25 @@ void printProductsWithSameType(SuperMarket* pSM)
 	ProductType type = getProdcutTypeFromUser();
 	printByType(pSM, type);
 	
+}
+
+char* initBarcode()
+{
+	char* barcode = createDynStr("Please enter Barcode: \n");
+	while (isBarcodeValid(barcode) == 0) {
+		barcode = createDynStr("Please create a barcode:(Must be in the length of 7, First and last letters must be Capital) \n");
+	}
+	return barcode;
+}
+
+int barcodeExists(SuperMarket* supermarket, char* barcode)
+{
+	for (int i = 0; i < supermarket->numOfProducts; i++) {
+		if (strcmp(supermarket->products[i]->barCode, barcode) == 0) {
+			return 1;
+		}
+	}
+	return 0;
 }
 
 void printShoppingCartFunc(SuperMarket* pSm)

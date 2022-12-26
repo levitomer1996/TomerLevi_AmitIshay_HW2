@@ -37,4 +37,6 @@ void addCustomerToSuperMarket(SuperMarket* pSm);
 
  void makeCustomerPaymentFunc(SuperMarket* pSM);
  void printProductsWithSameType(SuperMarket* pSM);
+ char* initBarcode();
+ int barcodeExists(SuperMarket* supermarket, char* barcode);
 #endif

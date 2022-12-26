@@ -38,6 +38,12 @@ int addProductToSuperMarket(SuperMarket* pSM)
 	}
 	pSM->products[pSM->numOfProducts] = malloc(sizeof(Product));
 	initProduct(pSM->products[pSM->numOfProducts]);
+	while (barcodeExists(pSM, pSM->products[pSM->numOfProducts]->barCode)== 1) {
+		printf("Barcode already exist in super market. \n");
+		free(pSM->products[pSM->numOfProducts]);
+		pSM->products[pSM->numOfProducts] = malloc(sizeof(Product));
+		initProduct(pSM->products[pSM->numOfProducts]);
+	}
 	pSM->numOfProducts++;
 	printf("%d\n", pSM->numOfProducts);
 	printf("New product added. \n");

@@ -12,9 +12,11 @@ typedef struct
 	char* city;
 
 } Address;
-void initAddress(Address* pAd);
+void	initAddress(Address* pAd);
 void	printAddress(const Address* pAd);
 void	freeAdress(Address* pAd);
+void	getTextWithOutSpaces(char* str);
+
 //void addDoubleSpace(Address* pAd);
 
 #endif
