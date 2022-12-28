@@ -29,14 +29,7 @@ void removeExtraSpaces(char* str) {
 
 
 
-char* formatStringAdress(char** str, int* size)
-{
-	for (int i = 0; i < &size; i++)
-	{
-		str[i] = (char*)realloc(str, sizeof(str[i]) + sizeof(char));
 
-	}
-}
 
 char** initSuperMarketAdress()
 {
