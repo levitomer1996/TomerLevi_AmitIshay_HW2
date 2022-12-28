@@ -23,7 +23,6 @@ void printCustomer(Customer* pCust)
 void freeCustomer(Customer* customer) {
 	free(customer->name);
 	freeShoppingCart(customer->shoppingCart);
-	free(customer);
 }
 
 

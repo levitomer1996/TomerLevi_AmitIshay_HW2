@@ -80,7 +80,6 @@ int isBarcodeValid(const char* barcode)
 void freeProduct(Product* product) {
 	free(product->name);
 	free(product->barCode);
-	free(product);
 }
 
 void printAllTypes()
