@@ -69,7 +69,8 @@ char** removeHashTagsFromString(char* str, int* pSize)
 	char* token = strtok(str, delim);
 	char** adressesArray = NULL;// An array of adresses of tokens aka words...
 	int pos = 0, size = 0;
-	int* pp;
+	char* pp;
+
 	while (token != NULL) {
 		pp = *token;
 		if (pp == ' ') // strtok City start with ' ' so with pp pointer i promoted to the City first letter
@@ -113,11 +114,14 @@ void printSuperMarketProductFunc(const SuperMarket* pSm)
 		printf("Super market has no products. \n");
 		
 	}
-	int i = 0;
-	for (int i = 0; i < pSm->numOfProducts; i++) {
-		printf("%d) ", i + 1 );
-		printProduct(pSm->products[i]);
+	else {
+		int i = 0;
+		for (int i = 0; i < pSm->numOfProducts; i++) {
+			printf("%d) ", i + 1);
+			printProduct(pSm->products[i]);
+		}
 	}
+	
 }
 
 void freeSuperMarket(SuperMarket* superMarket) {
@@ -139,7 +143,7 @@ void printSuperMarketCustomerFunc(const SuperMarket* pSM)
 {
 	if (pSM->numOfCustomers == 0) {
 		printf("Super market has no Customers. \n");
-		return 0;
+		return;
 	}
 	
 	int i = 0;
@@ -162,7 +166,7 @@ void addCustomerToSuperMarket(SuperMarket* pSm)
 
 void makePurchaseFunc(SuperMarket* pSm)
 {
-	getchar();
+	(void)getchar();
 	char* customerName = createDynStr("Please insert customer's name:");
 	while (isCustomerExist(pSm, customerName) == 0) {
 	customerName = createDynStr("Customer is not listed. Please insert customer's name:");
@@ -196,7 +200,7 @@ void makePurchaseFunc(SuperMarket* pSm)
 		handleAddItem(pSm, pCart);
 		printf("Press y/Y to procceed, anything else is back to main menu   \n");
 		scanf_s("%c", &clear);
-		getchar();
+		(void)getchar();
 	}
 	printShoppingCart(pCart);
 }
@@ -220,7 +224,7 @@ void handleAddItem(SuperMarket* pSm, ShoppingCart* pCart)
 	printf("Please enter amount of the chosen product: \n");
 	
 	scanf_s("%d", &amount);
-	getchar();
+	(void)getchar();
 	Product* chosenProd = getProductByBarCode(pSm, barcode);
 	while (chosenProd == 0) {
 	
@@ -231,7 +235,7 @@ void handleAddItem(SuperMarket* pSm, ShoppingCart* pCart)
 		printf("There are only %d of this item. \n", chosenProd->inStock);
 		printf("Please enter amount of the chosen product: \n");
 		scanf_s("%d", &amount);
-		getchar();
+		(void)getchar();
 	}
 	chosenProd->inStock -= amount;
 	//Init new ITem in cart:
@@ -244,7 +248,7 @@ void handleAddItem(SuperMarket* pSm, ShoppingCart* pCart)
 
 void makeCustomerPaymentFunc(SuperMarket* pSM)
 {
-	getchar();
+	(void)getchar();
 	char* name = createDynStr("Please type customers name that you would like to check out :\n");
 	Customer* cust = findCustomerByName(pSM, name);
 	printShoppingCart(cust->shoppingCart);
@@ -284,7 +288,7 @@ int barcodeExists(SuperMarket* supermarket, char* barcode)
 void printShoppingCartFunc(SuperMarket* pSm)
 {
 	
-	getchar();
+	(void)getchar();
 	char* customerName = createDynStr("Please type customers name from the list to show his cart :\n");
 	while (isCustomerExist(pSm, customerName) == 0) {
 		customerName = createDynStr("Customer is not listed. Please insert customer's name:");

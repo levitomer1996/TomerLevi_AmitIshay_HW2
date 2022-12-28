@@ -49,7 +49,8 @@ int addProductToSuperMarket(SuperMarket* pSM)
 	printf("New product added. \n");
 	return 1;
 }
-addCustomer(SuperMarket* pSM) {
+
+int addCustomer(SuperMarket* pSM) {
 	if (pSM == NULL) {
 		return 0;
 	}

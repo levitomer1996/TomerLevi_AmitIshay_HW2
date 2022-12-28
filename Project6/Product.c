@@ -13,9 +13,9 @@ const char* typeTitle[NofTypes] = { "Shelf","Frozen","Fridge", "FruitVegtable" }
 
 void initProduct(Product* pProd)
 {
-	getchar();
-	 pProd->name = createDynStr("Please enter products's name: \n");
-	 pProd->barCode = initBarcode();
+	(void)getchar();
+	pProd->name = createDynStr("Please enter products's name: \n");
+	pProd->barCode = initBarcode();
 	pProd->type = getProdcutTypeFromUser();
 	printf(" Please enter price: \n");
 	scanf_s("%f", &pProd->price);
@@ -23,7 +23,7 @@ void initProduct(Product* pProd)
 		printf("Price must be above 0. \n");
 		scanf_s("%f", &pProd->price);
 	}
-	getchar();
+	(void)getchar();
 	printf(" Please enter how many items: \n");
 	scanf_s("%d", &pProd->inStock);
 	while (pProd->inStock <= 0) {
@@ -88,6 +88,7 @@ void printAllTypes()
 }
 
 
+
 ProductType getProdcutTypeFromUser()
 {
 	int type;
@@ -95,8 +96,7 @@ ProductType getProdcutTypeFromUser()
 	for (int i = 0; i < NofTypes; i++)
 	{
 		printf("%d for %s \n", i, typeTitle[i]);
-		
 	}
-	scanf("%d", &type);
+	scanf_s("%d", &type);
 	return (ProductType)type;
 }

@@ -4,7 +4,7 @@
 #include <string.h>
 #include "Address.h"
 #include "functions.h"
-#define MAX_LENGTH 99
+
 
 
 void initAddress(Address* pAd)
