@@ -41,5 +41,5 @@ void addCustomerToSuperMarket(SuperMarket* pSm);
  int barcodeExists(SuperMarket* supermarket, char* barcode);
 
  //Check if everyonechecked out.
- int isEveryonPaid(SuperMarket*);
+ int isEveryonePay(SuperMarket* superMarket);
 #endif

@@ -32,7 +32,7 @@ void freeAddress(Address* address) {
     free(address->houseNumber);
     free(address->street);
     free(address->city);
-    free(address);
+
 }
 
 

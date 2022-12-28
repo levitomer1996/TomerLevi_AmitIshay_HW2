@@ -13,9 +13,6 @@ Customer initCustomer()
 void printCustomer(Customer* pCust)
 {
 	printf("Customer's name - %s , \n", pCust->name);
-	if(pCust->shoppingCart == NULL){
-		return;
-	}
 	printShoppingCart(pCust->shoppingCart);
 	
 }

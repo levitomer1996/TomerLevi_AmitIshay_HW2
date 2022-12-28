@@ -71,7 +71,7 @@ addCustomer(SuperMarket* pSM) {
 
 int isCustomerExist(SuperMarket* pSM,char* name)
 {
-	
+	printf("%s", name);
 	for (int i = 0; i < pSM->numOfCustomers; i++) {
 		if (strcmp(name,pSM->customers[i].name) == 0) {
 			return 1;

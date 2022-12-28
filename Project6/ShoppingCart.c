@@ -16,6 +16,7 @@ void initShoppingCart(ShoppingCart* pCart)
 void printShoppingCart(const ShoppingCart* pCart)
 {
 	if (pCart == NULL) {
+		printf("Customer's cart is empty. \n");
 		return;
 	}
 	int totalPrice = 0;
@@ -63,7 +64,6 @@ void freeShoppingCart(ShoppingCart* shoppingCart) {
 		freeShoppingItem(shoppingCart->items[i]);
 	}
 	free(shoppingCart->items);
-	free(shoppingCart);
 }
 
 ShoppingItem* getShoppingItemFromCart(ShoppingCart* pCart, char* barcode)

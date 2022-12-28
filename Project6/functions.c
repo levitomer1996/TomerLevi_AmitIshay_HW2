@@ -165,7 +165,7 @@ void makePurchaseFunc(SuperMarket* pSm)
 	getchar();
 	char* customerName = createDynStr("Please insert customer's name:");
 	while (isCustomerExist(pSm, customerName) == 0) {
-	char* customerName = createDynStr("Customer is not listed. Please insert customer's name:");
+	customerName = createDynStr("Customer is not listed. Please insert customer's name:");
 	};
 	
 	Customer* customer;
@@ -250,6 +250,7 @@ void makeCustomerPaymentFunc(SuperMarket* pSM)
 	printShoppingCart(cust->shoppingCart);
 	printf("Payment has made ! \n");
 	freeShoppingCart(cust->shoppingCart);
+	cust->shoppingCart = NULL;
 	printf("Shopping cart emptied. \n");
 
 }
@@ -284,11 +285,21 @@ void printShoppingCartFunc(SuperMarket* pSm)
 {
 	
 	getchar();
-	char* name = createDynStr("Please type customers name from the list to show his cart :\n");
-	Customer*	cust = findCustomerByName(pSm, name);
+	char* customerName = createDynStr("Please type customers name from the list to show his cart :\n");
+	while (isCustomerExist(pSm, customerName) == 0) {
+		customerName = createDynStr("Customer is not listed. Please insert customer's name:");
+	};
+	Customer*	cust = findCustomerByName(pSm, customerName);
 	printCustomer(cust);
-	printShoppingCart(cust->shoppingCart);
+
 }
-
-
+//Checks if everyone paid.
+int isEveryonePay(SuperMarket* superMarket) {
+	for (int i = 0; i < superMarket->numOfCustomers; i++) {
+		if (superMarket->customers[i].shoppingCart != NULL) {
+			return 0;
+		}
+	}
+	return 1;
+}
 

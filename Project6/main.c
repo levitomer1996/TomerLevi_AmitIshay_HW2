@@ -53,6 +53,11 @@ int main()
 			choice = '0';
 			break;
 		case '8':
+			if (isEveryonePay(&sm) == 0) {
+				printf("Ops, it seems like not everyone paid, the supermarket cannot be closed!\n");
+				choice = '0';
+				break;
+			}
 			printf("thank you, see you soon..\n");
 			choice = 'e';
 			break;
@@ -76,6 +81,7 @@ int main()
 			scanf(" %c", &choice);
 
 		}
-
 	}
+	freeSuperMarket(&sm);
+	
 }
