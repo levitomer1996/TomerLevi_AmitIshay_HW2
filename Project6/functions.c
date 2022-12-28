@@ -95,14 +95,7 @@ char** removeHashTagsFromString(char* str, int* pSize)
 	return  adressesArray;
 }
 
-void removeSpacedExtraSpacesFromStr(char** str, int* pSize)
-{
-	for (int i = 0; i < *pSize; i++) {
-		removeExtraSpaces(*(str + i));
-	}
 
-
-}
 
 //Swtich case in main.
 
