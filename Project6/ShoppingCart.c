@@ -61,7 +61,7 @@ int sumCartCheckOut(ShoppingCart* pCart)
 
 void freeShoppingCart(ShoppingCart* shoppingCart) {
 	for (int i = 0; i < shoppingCart->numOfItems; i++) {
-		freeShoppingItem(shoppingCart->items[i]);
+		free(shoppingCart->items[i]);
 	}
 	free(shoppingCart->items);
 }

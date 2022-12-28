@@ -38,28 +38,47 @@ void freeAddress(Address* address) {
 
 void getTextWithOutSpaces(char* str)
 {
-    char* result = malloc(strlen(str) * 2 + 1);
+    // Allocate memory for the result string
+    char* result = malloc(strlen(str) * 3 + 1); // *3 for the spaces, +1 for the null terminator
     int resultIndex = 0;
 
+    // Use strtok to split the string into tokens separated by space characters
     const char delim[2] = " ";
     char* token = strtok(str, delim);
     while (token != NULL) {
+        // Capitalize the first letter of the token
         if (token[0] >= 'a' && token[0] <= 'z') {
             token[0] = token[0] - 'a' + 'A';
         }
+
+        // Copy the capitalized token into the result string
         strcpy(result + resultIndex, token);
         resultIndex += strlen(token);
+
+        // Insert two space characters after the token
         result[resultIndex++] = ' ';
+        result[resultIndex++] = ' ';
+
+        // Get the next token
         token = strtok(NULL, delim);
     }
 
-    if (resultIndex > 0 && result[resultIndex - 1] == ' ') {
-        result[resultIndex - 1] = '\0';
+    // Make the last word lowercase
+    if (resultIndex > 0 && result[resultIndex - 1] == ' ' && result[resultIndex - 2] == ' ') {
+        result[resultIndex - 3] = tolower(result[resultIndex - 3]);
     }
 
+    // Remove the last two space characters, if any
+    if (resultIndex > 0 && result[resultIndex - 1] == ' ' && result[resultIndex - 2] == ' ') {
+        result[resultIndex - 2] = '\0';
+    }
+
+    // Add the null terminator to the result string
     result[resultIndex] = '\0';
 
-
+    // Copy the result string back into the input string
     strcpy(str, result);
+
+    // Free the memory allocated for the result string
     free(result);
 }

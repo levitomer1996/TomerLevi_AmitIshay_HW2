@@ -13,7 +13,7 @@ void removeSpacedExtraSpacesFromStr(char** str, int* pSize);
 void removeExtraSpaces(char* str);
 char* getDynString(char* str);
 
-char* formatStringAdress(char** str, int* pSize);
+
 char** initSuperMarketAdress();
 
 //Switch cases Main FUNC

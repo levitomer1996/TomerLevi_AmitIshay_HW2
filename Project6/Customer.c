@@ -5,7 +5,7 @@
 #include "functions.h"
 Customer initCustomer()
 {
-	getchar();
+	(void)getchar();
 	Customer cust = { createDynStr("Please enter customer name."), NULL };
 	return cust;
 }
