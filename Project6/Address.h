@@ -14,7 +14,7 @@ typedef struct
 } Address;
 void	initAddress(Address* pAd);
 void	printAddress(const Address* pAd);
-void	freeAdress(Address* pAd);
+void	freeAddress(Address* address);
 void	getTextWithOutSpaces(char* str);
 
 //void addDoubleSpace(Address* pAd);

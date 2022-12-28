@@ -120,6 +120,17 @@ void printSuperMarketProductFunc(const SuperMarket* pSm)
 	}
 }
 
+void freeSuperMarket(SuperMarket* superMarket) {
+	free(superMarket->name);
+	freeAddress(superMarket->adress);
+	free(superMarket->customers);
+	for (int i = 0; i < superMarket->numOfProducts; i++) {
+		freeProduct(superMarket->products[i]);
+	}
+	free(superMarket->products);
+	free(superMarket);
+}
+
 
 
 
@@ -278,3 +289,6 @@ void printShoppingCartFunc(SuperMarket* pSm)
 	printCustomer(cust);
 	printShoppingCart(cust->shoppingCart);
 }
+
+
+

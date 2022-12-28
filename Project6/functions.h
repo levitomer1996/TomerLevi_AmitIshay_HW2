@@ -33,10 +33,13 @@ void addCustomerToSuperMarket(SuperMarket* pSm);
  void handleAddItem(SuperMarket* pSm, ShoppingCart* pCart);
  
  //Print shopping cart
- void printShoppingCartFunc();
+ void printShoppingCartFunc(SuperMarket* pSm);
 
  void makeCustomerPaymentFunc(SuperMarket* pSM);
  void printProductsWithSameType(SuperMarket* pSM);
  char* initBarcode();
  int barcodeExists(SuperMarket* supermarket, char* barcode);
+
+ //Check if everyonechecked out.
+ int isEveryonPaid(SuperMarket*);
 #endif

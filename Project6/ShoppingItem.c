@@ -36,7 +36,7 @@ int decreaseItemQuantity(ShoppingItem* pItem)
 	return 1;
 }
 
-void freeShoppingItem(ShoppingItem* pItem)
-{
-
+void freeShoppingItem(ShoppingItem* shoppingItem) {
+	free(shoppingItem->barcode);
+	free(shoppingItem);
 }

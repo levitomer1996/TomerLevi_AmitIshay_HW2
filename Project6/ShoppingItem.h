@@ -16,5 +16,5 @@ void	initShoppingItem(ShoppingItem* pItem, Product* pProd);
 void	printShoppingItem(const ShoppingItem* pItem);
 int		raiseItemQuantity(ShoppingItem* pItem);
 int		decreaseItemQuantity(ShoppingItem* pItem);
-void	freeShoppingItem(ShoppingItem* pItem);
+void	freeShoppingItem(ShoppingItem* shoppingItem);
 #endif

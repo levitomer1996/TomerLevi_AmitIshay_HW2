@@ -20,7 +20,7 @@ void	printSuperMarket(const SuperMarket* pSM);
 void	initSuperMarket(SuperMarket* pSM, Address* pAd);
 int		addProductToSuperMarket(SuperMarket* pSM);
 void	printSuperMarketProductFunc(const SuperMarket* pSm);
-
+void	freeSuperMarket(SuperMarket* superMarket);
 //Add customer
 int addCustomer(SuperMarket* pSM);
 

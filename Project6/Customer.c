@@ -20,9 +20,10 @@ void printCustomer(Customer* pCust)
 	
 }
 
-void freeCustomer(Customer* pCust)
-{
-	free(pCust->name);
+void freeCustomer(Customer* customer) {
+	free(customer->name);
+	freeShoppingCart(customer->shoppingCart);
+	free(customer);
 }
 
 

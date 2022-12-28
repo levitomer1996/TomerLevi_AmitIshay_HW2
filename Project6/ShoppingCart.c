@@ -58,9 +58,12 @@ int sumCartCheckOut(ShoppingCart* pCart)
 	return sum;
 }
 
-void freeShoppingCart(ShoppingCart* pCart)
-{
-	free(pCart->items);
+void freeShoppingCart(ShoppingCart* shoppingCart) {
+	for (int i = 0; i < shoppingCart->numOfItems; i++) {
+		freeShoppingItem(shoppingCart->items[i]);
+	}
+	free(shoppingCart->items);
+	free(shoppingCart);
 }
 
 ShoppingItem* getShoppingItemFromCart(ShoppingCart* pCart, char* barcode)

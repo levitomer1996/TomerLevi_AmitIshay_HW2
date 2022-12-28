@@ -12,6 +12,6 @@ typedef struct
 
 Customer	initCustomer();
 void	printCustomer(Customer* pCust);
-void	freeCustomer(Customer* pCust);
+void freeCustomer(Customer* customer);
 
 #endif
