@@ -252,10 +252,13 @@ void makeCustomerPaymentFunc(SuperMarket* pSM)
 	char* name = createDynStr("Please type customers name that you would like to check out :\n");
 	Customer* cust = findCustomerByName(pSM, name);
 	printShoppingCart(cust->shoppingCart);
-	printf("Payment has made ! \n");
-	freeShoppingCart(cust->shoppingCart);
-	cust->shoppingCart = NULL;
-	printf("Shopping cart emptied. \n");
+
+	if (cust->shoppingCart != NULL) {
+		freeShoppingCart(cust->shoppingCart);
+		cust->shoppingCart = NULL;
+		printf("Payment has made ! \n");
+		printf("Shopping cart emptied. \n");
+	}
 
 }
 
