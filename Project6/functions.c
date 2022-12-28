@@ -120,7 +120,7 @@ void freeSuperMarket(SuperMarket* superMarket) {
 		freeProduct(superMarket->products[i]);
 	}
 	free(superMarket->products);
-	free(superMarket);
+	
 }
 
 
