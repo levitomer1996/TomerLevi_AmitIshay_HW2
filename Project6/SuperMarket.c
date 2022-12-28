@@ -87,7 +87,7 @@ Customer* findCustomerByName(SuperMarket* pSM, char* name)
 			return  &(pSM->customers[i]);
 		}
 	}
-	return;
+	return NULL;
 }
 
 void printSuperMarketCustomers(SuperMarket* pSM)

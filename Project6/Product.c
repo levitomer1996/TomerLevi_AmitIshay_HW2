@@ -19,9 +19,17 @@ void initProduct(Product* pProd)
 	pProd->type = getProdcutTypeFromUser();
 	printf(" Please enter price: \n");
 	scanf_s("%f", &pProd->price);
+	while (pProd->price <= 0) {
+		printf("Price must be above 0. \n");
+		scanf_s("%f", &pProd->price);
+	}
 	getchar();
 	printf(" Please enter how many items: \n");
 	scanf_s("%d", &pProd->inStock);
+	while (pProd->inStock <= 0) {
+		printf("quantity must be above 0. \n");
+		scanf_s("%d", &pProd->inStock);
+	}
 	
 	//pProd->inStock = 1;
 }

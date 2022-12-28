@@ -154,10 +154,9 @@ void makePurchaseFunc(SuperMarket* pSm)
 	getchar();
 	char* customerName = createDynStr("Please insert customer's name:");
 	while (isCustomerExist(pSm, customerName) == 0) {
-	getchar();
 	char* customerName = createDynStr("Customer is not listed. Please insert customer's name:");
 	};
-	printf("Arrvied here");
+	
 	Customer* customer;
 	ShoppingCart* pCart;
 	customer = findCustomerByName(pSm, customerName);
@@ -173,9 +172,13 @@ void makePurchaseFunc(SuperMarket* pSm)
 	}
 		
 	
-	
+	if (pSm->numOfProducts == 0) {
+		printf("Super martket doesn't have any product. you cannot make a purchase.  \n");
+		return;
+	}
 	char clear = 'y';
 	while ((clear == 'Y' || clear == 'y')) {
+		
 		printSuperMarketProductFunc(pSm);
 	
 		
@@ -197,7 +200,7 @@ Product* getProductByBarCode(SuperMarket* pSm, char* barcode)
 	return 0;
 }
 
-int handleAddItem(SuperMarket* pSm, ShoppingCart* pCart)
+void handleAddItem(SuperMarket* pSm, ShoppingCart* pCart)
 {
 	
 	char* barcode = createDynStr("Please insert barcode that you would like to had: \n");

@@ -30,7 +30,7 @@ void addCustomerToSuperMarket(SuperMarket* pSm);
 
  void makePurchaseFunc(SuperMarket* pSm);
  Product* getProductByBarCode(SuperMarket* pSm, char* barcode);
- int handleAddItem(SuperMarket* pSm, ShoppingCart* pCart);
+ void handleAddItem(SuperMarket* pSm, ShoppingCart* pCart);
  
  //Print shopping cart
  void printShoppingCartFunc();
