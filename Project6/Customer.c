@@ -22,8 +22,6 @@ void freeCustomer(Customer* customer) {
 	freeShoppingCart(customer->shoppingCart);
 }
 
-
-
 //Check if customer has items in his cart, if not cart is null.
 int isCartExistEmpty(Customer* pCust) {
 	if (pCust->shoppingCart == NULL) {

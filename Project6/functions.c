@@ -111,7 +111,7 @@ void printSuperMarketProductFunc(const SuperMarket* pSm)
 {
 	if (pSm->numOfProducts == 0) {
 		printf("Super market has no products. \n");
-		return 0;
+		
 	}
 	int i = 0;
 	for (int i = 0; i < pSm->numOfProducts; i++) {
